@@ -16,6 +16,7 @@ class ZhipinSpider(scrapy.Spider):
         for job in jobs:
             item = BossItem()
             item['post'] = job.xpath('./div/h3/a/div/text()').get()
+            item['salary'] = job.xpath('./div/h3/a/span/text()').get()
             item['address'] = job.xpath('./div[@class="info-primary"]/p/text()').getall()[0]
             item['experience'] = job.xpath('./div[@class="info-primary"]/p/text()').getall()[1]
             item['education'] = job.xpath('./div[@class="info-primary"]/p/text()').getall()[2]
